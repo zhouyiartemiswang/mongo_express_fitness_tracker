@@ -1,13 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
     <title>Fitness Tracker</title>
 </head>
+
 <body>
-    <h1>Fitness Tracker</h1>
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome back!</h1>
+        <p class="lead">View and track your stats in dashboard or create daily workouts.</p>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Create Workout</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Continue Workout</button>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Create Workout by Adding Exercises</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-form-label">Select Type of Training</label>
+                            <div class="col-sm-6">
+                                <select id="training-type">
+                                    <option>Resistance</option>
+                                    <option>Cardio</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-form-label">Select Name of Exercise</label>
+                            <div class="col-sm-6">
+                                <select id="exercise-name">
+                                    <option>Squat</option>
+                                    <option>Lunge</option>
+                                    <option>Deadlift</option>
+                                    <option>Pull Up</option>
+                                    <option>Lat Pulldown</option>
+                                    <option>Bent over Row</option>
+                                    <option>Push Up</option>
+                                    <option>Bench Press</option>
+                                    <option>Tricep Pushdown</option>
+                                    <option>Barbell Curl</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-form-label">Weights</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control" id="weights">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-form-label">#Sets</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control" id="sets">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-form-label">#Reps</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control" id="reps">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-form-label">Duration (min)</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control" id="duration">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Add Exercise</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
     <script src="../assets/js/index.js"></script>
 </body>
+
 </html>
