@@ -3,11 +3,15 @@ const router = express.Router();
 const db = require("../models");
 
 // Create a new workout
-router.post("/create", ({ body }, res) => {
-    db.Workout.create(body);
+router.post("/create-workout", ({ body }, res) => {
+    const workout = new db.Workout(body);
+    db.Workout.create(workout)
+    .then(newWorkout => {
+        res.json(newWorkout);
+    })
+    .catch(err => {
+        res.json(err);
+    });
 });
 
-// Create a new exercise
-router.post("/create", ({ body }, res) => {
-    db.Workout.create(body);
-});
+module.exports = router;

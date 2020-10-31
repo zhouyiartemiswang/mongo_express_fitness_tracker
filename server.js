@@ -15,26 +15,17 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/trackerdb", { useNewUrlParser: true });
 
-
 // Require routes
-const workoutRoutes = require('./controllers/workoutController');
+const htmlRoutes = require("./controllers/htmlController");
+app.use(htmlRoutes);
+
+const workoutRoutes = require("./controllers/workoutController");
 app.use("/api", workoutRoutes);
 
-const exerciseRoutes = require('./controllers/exerciseController');
+const exerciseRoutes = require("./controllers/exerciseController");
 app.use("/api", exerciseRoutes);
 
 // Start the server
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
 });
-
-// Back-End
-// Database setup
-    // Collection setup
-        // WorkoutSchema (day, exercises)
-        // ExerciseSchema (name, type, weight, sets, reps, duration, distance (for cardio))
-
-// Front-End
-    // Cardio page
-    // Resistance page
-    // Stats dashboard page
