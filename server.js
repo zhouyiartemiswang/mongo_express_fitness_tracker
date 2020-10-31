@@ -17,8 +17,11 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/trackerdb", { u
 
 
 // Require routes
-const workoutRoutes = require('./controllers/resortController');
+const workoutRoutes = require('./controllers/workoutController');
 app.use("/api", workoutRoutes);
+
+const exerciseRoutes = require('./controllers/exerciseController');
+app.use("/api", exerciseRoutes);
 
 // Start the server
 app.listen(PORT, () => {
