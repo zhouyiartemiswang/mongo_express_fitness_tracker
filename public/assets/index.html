@@ -14,83 +14,8 @@
     <div class="jumbotron">
         <h1 class="display-4">Welcome back!</h1>
         <p class="lead">View and track your stats in dashboard or create daily workouts.</p>
-
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Create Workout</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Continue Workout</button>
-    </div>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Create Workout by Adding Exercises</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group row">
-                            <label class="col-sm-6 col-form-label">Select Type of Training</label>
-                            <div class="col-sm-6">
-                                <select id="training-type">
-                                    <option>Resistance</option>
-                                    <option>Cardio</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-6 col-form-label">Select Name of Exercise</label>
-                            <div class="col-sm-6">
-                                <select id="exercise-name">
-                                    <option>Squat</option>
-                                    <option>Lunge</option>
-                                    <option>Deadlift</option>
-                                    <option>Pull Up</option>
-                                    <option>Lat Pulldown</option>
-                                    <option>Bent over Row</option>
-                                    <option>Push Up</option>
-                                    <option>Bench Press</option>
-                                    <option>Tricep Pushdown</option>
-                                    <option>Barbell Curl</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-6 col-form-label">Weights</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control" id="weights">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-6 col-form-label">#Sets</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control" id="sets">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-6 col-form-label">#Reps</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control" id="reps">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-6 col-form-label">Duration (min)</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control" id="duration">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Add Exercise</button>
-                </div>
-            </div>
-        </div>
+        <a class="btn btn-primary btn-lg" href="create.html" role="button">Create Workout</a>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Continue Workout</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
