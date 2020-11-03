@@ -28,8 +28,8 @@ router.get("/workout/:day", (req, res) => {
 });
 
 // Populate a workout
-router.get("/view-workout/:day", (req, res) => {
-    db.Workout.find({day: req.params.day})
+router.get("/view-workout", (req, res) => {
+    db.Workout.find({})
         .populate("exercises")
         .then(data => {
             res.json(data);
