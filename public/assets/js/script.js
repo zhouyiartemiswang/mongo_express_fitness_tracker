@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     $.get("/api/view-workout", function (data, status) {
-        // console.log(data);
+        console.log(data);
         data.forEach(function (workout) {
             // console.log(workout);
             $(".workout-name").append(`<option value="${workout._id}">${workout.day}<option>`);
@@ -25,7 +25,7 @@ $(document).ready(function () {
                                 <li class="list-group-item"># Reps: ${exercise.reps}</li>
                                 <li class="list-group-item">Duration (min): ${exercise.duration}</li>
                             </ul>
-                            <button class="btn btn-primary">Delete Exercise</button>
+                            <button class="btn btn-primary delete-btn" data-id="${exercise._id}">Delete Exercise</button>
                         </div>
                     </div>`);
                 } else {
@@ -38,7 +38,7 @@ $(document).ready(function () {
                                     <li class="list-group-item">Distance (mile): ${exercise.distance}</li>
                                     <li class="list-group-item">Duration (min): ${exercise.duration}</li>
                                 </ul>
-                                <button class="btn btn-primary">Delete Exercise</button>
+                                <button class="btn btn-primary delete-btn" data-id="${exercise._id}">Delete Exercise</button>
                         </div>
                     </div>`);
                 }
@@ -52,6 +52,13 @@ $(document).ready(function () {
         $.post("/api/create-workout", function (data, status) {
             console.log(data);
         });
+    });
+
+    // Delete an exercise
+    $(".delete-btn").on("click", function () {
+        console.log("clicked");
+        const exerciseId = this.attr(data-id);
+        console.log(exerciseId);
     });
 
     $("#cardioForm").hide();
@@ -69,10 +76,8 @@ $(document).ready(function () {
 
     $("#resistanceForm").on("submit", function (event) {
         event.preventDefault();
-        // console.log($(".workout-name").find(":selected").text());
+
         const workoutDay = $(".workout-name").find(":selected").text();
-        // console.log($(".exercise-name").find(":selected").text());
-        console.log(typeof $("#duration").val());
         const resistanceObj = {
             type: "Resistance",
             name: $(".exercise-name").find(":selected").text(),
@@ -81,7 +86,7 @@ $(document).ready(function () {
             reps: $("#reps").val(),
             duration: $("#duration").val()
         }
-        // console.log(resistanceObj);
+        
         $.post("/api/add-exercise/" + workoutDay, resistanceObj, function (data, status) {
             console.log(status);
         });
