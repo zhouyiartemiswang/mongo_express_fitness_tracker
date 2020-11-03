@@ -21,21 +21,37 @@ router.get("/exercise/:id", (req, res) => {
 });
 
 // API route to add exercise
-router.post("/add-exercise/", ({ body }, res) => {
-    db.Exercise.create(body)
-        .then(data => {
-            res.json(data);
-        })
-        .catch(err => {
-            res.json(err);
-        });
-});
+// router.post("/add-exercise/", ({ body }, res) => {
+//     db.Exercise.create(body)
+//         .then(data => {
+//             res.json(data);
+//         })
+//         .catch(err => {
+//             res.json(err);
+//         });
+// });
 
 // API route to add exercise
-router.post("/add-exercise", (req, res) => {
+// router.post("/add-exercise", (req, res) => {
+//     db.Exercise.create(req.body)
+//         .then(({ _id }) => db.Workout.findOneAndUpdate(
+//             { _id: mongjs.ObjectId(req.params.workoutId) },
+//             { $push: { exercises: _id } },
+//             { new: true }
+//         ))
+//         // .then(({ _id }) => db.Workout.findAll({}).sort({day:-1}).limit(1))
+//         .then(data => {
+//             console.log(data);
+//             res.json(data);
+//         })
+//         .catch(err => {
+//             res.json(err);
+//         });
+// });
+router.post("/add-exercise/:day", (req, res) => {
     db.Exercise.create(req.body)
         .then(({ _id }) => db.Workout.findOneAndUpdate(
-            { _id: mongjs.ObjectId(req.params.workoutId) },
+            { day: req.params.day },
             { $push: { exercises: _id } },
             { new: true }
         ))

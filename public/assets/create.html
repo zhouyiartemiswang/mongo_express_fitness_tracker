@@ -27,7 +27,7 @@
                     <label class="col-sm-6 col-form-label">Select Type of Training</label>
                     <div class="col-sm-6">
                         <select id="training-type">
-                            <option>Training Type</option>
+                            <option value="" selected disabled hidden></option>
                             <option>Resistance</option>
                             <option>Cardio</option>
                         </select>
@@ -38,15 +38,16 @@
                 <div class="form-group row">
                     <label class="col-sm-6 col-form-label">Select Workout</label>
                     <div class="col-sm-6">
-                        <select id="workout-name">
-                            
+                        <select class="workout-name">
+                            <option value="" selected disabled hidden></option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-6 col-form-label">Select Name of Exercise</label>
                     <div class="col-sm-6">
-                        <select id="exercise-name">
+                        <select class="exercise-name">
+                            <option value="" selected disabled hidden></option>
                             <option>Running</option>
                             <option>Stair Climbing</option>
                             <option>Rope Jumping</option>
@@ -67,7 +68,7 @@
                         <input type="number" class="form-control" id="duration">
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary">Add Exercise</button>
+                <button type="submit" class="btn btn-primary">Add Exercise</button>
                 <button type="button" class="btn btn-primary">View Workout</button>
             </form>
 
@@ -75,15 +76,16 @@
                 <div class="form-group row">
                     <label class="col-sm-6 col-form-label">Select Workout</label>
                     <div class="col-sm-6">
-                        <select id="workout-name">
-                            
+                        <select class="workout-name">
+                            <option value="" selected disabled hidden></option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-6 col-form-label">Select Name of Exercise</label>
                     <div class="col-sm-6">
-                        <select id="exercise-name">
+                        <select class="exercise-name">
+                            <option value="" selected disabled hidden></option>
                             <option>Squat</option>
                             <option>Lunge</option>
                             <option>Deadlift</option>
@@ -121,7 +123,7 @@
                         <input type="number" class="form-control" id="duration">
                     </div>
                 </div>
-                <input type="submit" class="btn btn-primary" value="Add Exercise"></button>
+                <button type="submit" class="btn btn-primary" value="Add Exercise"></button>
                 <button type="button" class="btn btn-primary">View Workout</button>
             </form>
         </div>
