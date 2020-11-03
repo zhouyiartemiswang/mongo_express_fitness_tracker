@@ -22,7 +22,7 @@
         </div> -->
         <div class="card-body">
             <h5 class="card-title">Add Exercise</h5>
-            <form action="">
+            <form>
                 <div class="form-group row">
                     <label class="col-sm-6 col-form-label">Select Type of Training</label>
                     <div class="col-sm-6">
@@ -35,6 +35,14 @@
                 </div>
             </form>
             <form id="cardioForm">
+                <div class="form-group row">
+                    <label class="col-sm-6 col-form-label">Select Workout</label>
+                    <div class="col-sm-6">
+                        <select id="workout-name">
+                            
+                        </select>
+                    </div>
+                </div>
                 <div class="form-group row">
                     <label class="col-sm-6 col-form-label">Select Name of Exercise</label>
                     <div class="col-sm-6">
@@ -64,7 +72,14 @@
             </form>
 
             <form id="resistanceForm">
-
+                <div class="form-group row">
+                    <label class="col-sm-6 col-form-label">Select Workout</label>
+                    <div class="col-sm-6">
+                        <select id="workout-name">
+                            
+                        </select>
+                    </div>
+                </div>
                 <div class="form-group row">
                     <label class="col-sm-6 col-form-label">Select Name of Exercise</label>
                     <div class="col-sm-6">
@@ -106,19 +121,17 @@
                         <input type="number" class="form-control" id="duration">
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary">Add Exercise</button>
+                <input type="submit" class="btn btn-primary" value="Add Exercise"></button>
                 <button type="button" class="btn btn-primary">View Workout</button>
             </form>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
-    <script src="../assets/js/index.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

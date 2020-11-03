@@ -2,60 +2,21 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const db = require("../models");
+const path = require("path");
 
-// Get all workouts 
-router.get("/workout/all", (req, res) => {
-    db.Workout.find({}, (error, data) => {
-        if (error) {
-            res.send(error);
-        } else {
-            res.json(data);
-        }
-    });
+// Homepage
+router.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/assets/index.html"));
 });
 
-// Populate a workout
+// Create workout
+router.get("/create-workout", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/assets/create.html"));
+});
+
+// View workout
 router.get("/view-workout", (req, res) => {
-    db.Workout.find({})
-        .populate({path: "exercises"})
-        .exec((error, data) => {
-            if (error) return handleError(error);
-            res.json(data);
-        })
-        // .then(data => {
-        //     // console.log("here");
-        //     res.json(data);
-        // })
-        // .catch(err => {
-        //     res.json(err);
-        // });
-});
-
-// Get all exercises
-router.get("/exercise/all", (req, res) => {
-    db.Exercise.find({}, (error, data) => {
-        if (error) {
-            res.send(error);
-        } else {
-            res.json(data);
-        }
-    });
-});
-
-// Get exercise by id
-router.get("/exercise/:id", (req, res) => {
-    // console.log(req.params.id);
-    // console.log(mongoose.ObjectId(req.params.id));
-    db.Exercise.find({
-        name: "squat"
-        // _id: mongoose.ObjectId(req.params.id)
-    }, (error, exercise) => {
-        if (error) {
-            console.log(error);
-        } else {
-            res.json(exercise);
-        }
-    });
+    res.sendFile(path.join(__dirname, "../public/assets/view.html"));
 });
 
 module.exports = router;
