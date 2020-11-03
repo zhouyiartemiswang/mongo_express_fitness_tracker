@@ -61,11 +61,14 @@ $(document).ready(function () {
             distance: $("#weights").val(),
             duration: $("#duration").val()
         }
-        
+
         $.post("/api/add-exercise/" + workoutDay, cardioObj, function (data, status) {
             console.log(status);
         });
     });
 
+    $(".view-btn").on("click", function () {
+        
+    });
 
 });
