@@ -1,52 +1,67 @@
 $(document).ready(function () {
+
     // Hide both cardio and resistance form on loading
     $("#cardioForm").hide();
     $("#resistanceForm").hide();
 
     // Display all workouts in view page
     $.get("/api/view-workout", function (data, status) {
-        console.log(data);
+    
         data.forEach(function (workout) {
-            $(".workout-name").append(`<option value="${workout._id}">${workout.day}<option>`);
+            $(".workout-name").append(`<option data-id="${workout._id}">${workout.day}<option>`);
             $(".container").append(`
             <div class="row">
                 <h2>${workout.day}</h2>
-                <button class="btn btn-primary">Add Exercise</button>
+                <a class="btn btn-primary" href="/create-workout" role="button">Add Exercise</a>
             </div>`);
-            $(".container").append(`<div class="row"></div>`);
+            $(".container").append(`<div class="row workout-row"></div>`);
 
-            workout.exercises.forEach(function (exercise) {
-                if (exercise.type === "Resistance") {
-                    $(".container").children().append(`
-                        <div class="col-sm-12 col-md-4">
-                            <div class="card">
-                                <div class="card-header">${exercise.name}</div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Type: Resistance</li>
-                                    <li class="list-group-item">Weight (lb): ${exercise.weight}</li>
-                                    <li class="list-group-item"># Sets: ${exercise.sets}</li>
-                                    <li class="list-group-item"># Reps: ${exercise.reps}</li>
-                                    <li class="list-group-item">Duration (min): ${exercise.duration}</li>
-                                </ul>
-                                <button class="btn btn-primary delete-btn" data-id="${exercise._id}">Delete Exercise</button>
-                            </div>
-                        </div>`);
-                } else {
-                    $(".container").children().append(`
-            
-                        <div class="col-sm-12 col-md-4">
-                            <div class="card">
-                                <div class="card-header">${exercise.name}</div>
+            if (workout.exercises.length != 0) {
+
+                workout.exercises.forEach(function (exercise) {
+                    if (exercise.type === "Resistance") {
+                        $(".container").children(".workout-row").append(`
+                            <div class="col-sm-12 col-md-4">
+                                <div class="card">
+                                    <div class="card-header">${exercise.name}</div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Type: Resistance</li>
+                                        <li class="list-group-item">Weight (lb): ${exercise.weight}</li>
+                                        <li class="list-group-item"># Sets: ${exercise.sets}</li>
+                                        <li class="list-group-item"># Reps: ${exercise.reps}</li>
+                                        <li class="list-group-item">Duration (min): ${exercise.duration}</li>
+                                    </ul>
+                                    <button class="btn btn-primary delete-btn" data-id="${exercise._id}">Delete Exercise</button>
+                                </div>
+                            </div>`);
+                    } else {
+                        $(".container").children(".workout-row").append(`
+                
+                            <div class="col-sm-12 col-md-4">
+                                <div class="card">
+                                    <div class="card-header">${exercise.name}</div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">Type: Cardio</li>
                                         <li class="list-group-item">Distance (mile): ${exercise.distance}</li>
                                         <li class="list-group-item">Duration (min): ${exercise.duration}</li>
                                     </ul>
                                     <button class="btn btn-primary delete-btn" data-id="${exercise._id}">Delete Exercise</button>
-                            </div>
-                        </div>`);
-                }
-            });
+                                </div>
+                            </div>`);
+                    }
+                });
+            } else {
+
+                $(".container").children(".workout-row").append(`
+                <div class="col-sm-12 col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            No exercises.
+                        </div>
+                    </div>
+                </div>`);
+
+            }
         });
     });
 
@@ -75,8 +90,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#resistanceForm").on("submit", function (event) {
-        event.preventDefault();
+    $("#resistanceForm").on("submit", function () {
 
         const workoutDay = $(".workout-name").find(":selected").text();
         const resistanceObj = {
@@ -91,10 +105,10 @@ $(document).ready(function () {
         $.post("/api/add-exercise/" + workoutDay, resistanceObj, function (data, status) {
             console.log(status);
         });
+
     });
 
-    $("#cardioForm").on("submit", function (event) {
-        event.preventDefault();
+    $("#cardioForm").on("submit", function () {
 
         const workoutDay = $(".workout-name").find(":selected").text();
         const cardioObj = {
@@ -107,6 +121,7 @@ $(document).ready(function () {
         $.post("/api/add-exercise/" + workoutDay, cardioObj, function (data, status) {
             console.log(status);
         });
+
     });
 
 });
