@@ -7,20 +7,25 @@ $(document).ready(function () {
     // Display all workouts in view page
     $.get("/api/view-workout", function (data, status) {
     
-        data.forEach(function (workout) {
+        data.forEach(function (workout, index) {
+            // $(".container").empty();
             $(".workout-name").append(`<option data-id="${workout._id}">${workout.day}<option>`);
             $(".container").append(`
             <div class="row">
-                <h2>${workout.day}</h2>
-                <a class="btn btn-primary" href="/create-workout" role="button">Add Exercise</a>
+            <h2>${workout.day}</h2>
+            <a class="btn btn-primary" href="/create-workout" role="button">Add Exercise</a>
             </div>`);
-            $(".container").append(`<div class="row workout-row"></div>`);
-
+            $(".container").append(`<div id="row${index}" class="row"></div>`);
+            
+            // console.log(workout.exercises);
+            // console.log(workout.exercises.length);
             if (workout.exercises.length != 0) {
 
+                // $(".container .workout-row .card").empty();
                 workout.exercises.forEach(function (exercise) {
+            
                     if (exercise.type === "Resistance") {
-                        $(".container").children(".workout-row").append(`
+                        $(".container").children(`#row${index}`).append(`
                             <div class="col-sm-12 col-md-4">
                                 <div class="card">
                                     <div class="card-header">${exercise.name}</div>
@@ -35,7 +40,7 @@ $(document).ready(function () {
                                 </div>
                             </div>`);
                     } else {
-                        $(".container").children(".workout-row").append(`
+                        $(".container").children(`#row${index}`).append(`
                 
                             <div class="col-sm-12 col-md-4">
                                 <div class="card">
@@ -52,11 +57,11 @@ $(document).ready(function () {
                 });
             } else {
 
-                $(".container").children(".workout-row").append(`
+                $(".container").children(`#row${index}`).append(`
                 <div class="col-sm-12 col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            No exercises.
+                            No exercises yet.
                         </div>
                     </div>
                 </div>`);
