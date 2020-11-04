@@ -6,9 +6,9 @@ $(document).ready(function () {
 
     // Display all workouts with associated exercises in view page
     $.get("/api/view-workout", function (data, status) {
-    
+
         data.forEach(function (workout, index) {
-            
+
             $(".workout-name").append(`<option data-id="${workout._id}">${workout.day}<option>`);
             $(".container").append(`
             <div class="row header">
@@ -20,7 +20,6 @@ $(document).ready(function () {
             if (workout.exercises.length != 0) {
 
                 workout.exercises.forEach(function (exercise) {
-            
                     if (exercise.type === "Resistance") {
                         $(".container").children(`#row${index}`).append(`
                             <div class="col-sm-12 col-md-4">
@@ -83,13 +82,13 @@ $(document).ready(function () {
         $.ajax({
             url: `/api/delete-exercise/${workoutId}/${exerciseId}`,
             type: "DELETE",
-            success: function(data, status) {
+            success: function (data, status) {
                 console.log(data);
                 console.log(status);
                 location.reload();
             }
         });
-        
+
     });
 
     $("#training-type").change(function () {
