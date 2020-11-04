@@ -22,17 +22,37 @@ router.post("/add-exercise/:day", (req, res) => {
 });
 
 // Delete exercise from exercise collection and workout association
-router.delete("/delete-exercise/:id", (req, res) => {
-    db.Exercise.deleteOne({ _id: req.params.id })
+router.delete("/delete-exercise/:workoutId/:exerciseId", (req, res) => {
+    console.log(req.params.workoutId);
+    console.log(req.params.exerciseId);
+
+    db.Workout.findOneAndUpdate(
+        { _id: req.params.workoutId },
+        { $pull: { exercises: { _id: req.params.exerciseId } } },
+        { new: true })
         .then(data => {
-            console.log(data);
-            res.json(data);
+            // res.json(data);
+            db.Exercise.deleteOne({ _id: req.params.exerciseId })
+                .then(data => {
+                    console.log(data);
+                    res.json(data);
+                })
+                .catch(err => {
+                    res.json(err);
+                });
         })
         .catch(err => {
             res.json(err);
         });
-    // db.Workout.update({}, { $unset: { _id: req.params.id } });
-    db.Workout.exercises.pull({ _id: req.params.id });
+
+    // db.Exercise.deleteOne({ _id: req.params.exerciseId })
+    //     .then(data => {
+    //         console.log(data);
+    //         res.json(data);
+    //     })
+    //     .catch(err => {
+    //         res.json(err);
+    //     });
 });
 
 

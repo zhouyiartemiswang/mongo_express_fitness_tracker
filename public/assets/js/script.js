@@ -4,24 +4,21 @@ $(document).ready(function () {
     $("#cardioForm").hide();
     $("#resistanceForm").hide();
 
-    // Display all workouts in view page
+    // Display all workouts with associated exercises in view page
     $.get("/api/view-workout", function (data, status) {
     
         data.forEach(function (workout, index) {
-            // $(".container").empty();
+            
             $(".workout-name").append(`<option data-id="${workout._id}">${workout.day}<option>`);
             $(".container").append(`
-            <div class="row">
+            <div class="row header">
             <h2>${workout.day}</h2>
             <a class="btn btn-primary" href="/create-workout" role="button">Add Exercise</a>
             </div>`);
             $(".container").append(`<div id="row${index}" class="row"></div>`);
-            
-            // console.log(workout.exercises);
-            // console.log(workout.exercises.length);
+
             if (workout.exercises.length != 0) {
 
-                // $(".container .workout-row .card").empty();
                 workout.exercises.forEach(function (exercise) {
             
                     if (exercise.type === "Resistance") {
@@ -36,7 +33,7 @@ $(document).ready(function () {
                                         <li class="list-group-item"># Reps: ${exercise.reps}</li>
                                         <li class="list-group-item">Duration (min): ${exercise.duration}</li>
                                     </ul>
-                                    <button class="btn btn-primary delete-btn" data-id="${exercise._id}">Delete Exercise</button>
+                                    <button class="btn btn-primary delete-btn" data-id="${exercise._id}" data-workout-id="${workout._id}">Delete Exercise</button>
                                 </div>
                             </div>`);
                     } else {
@@ -50,7 +47,7 @@ $(document).ready(function () {
                                         <li class="list-group-item">Distance (mile): ${exercise.distance}</li>
                                         <li class="list-group-item">Duration (min): ${exercise.duration}</li>
                                     </ul>
-                                    <button class="btn btn-primary delete-btn" data-id="${exercise._id}">Delete Exercise</button>
+                                    <button class="btn btn-primary delete-btn" data-id="${exercise._id}" data-workout-id="${workout._id}">Delete Exercise</button>
                                 </div>
                             </div>`);
                     }
@@ -78,10 +75,21 @@ $(document).ready(function () {
     });
 
     // Delete an exercise
-    $(".delete-btn").on("click", function () {
-        console.log("clicked");
-        const exerciseId = this.attr("data-id");
-        console.log(exerciseId);
+    $(document).on("click", ".delete-btn", function () {
+
+        const exerciseId = $(this).attr("data-id");
+        const workoutId = $(this).attr("data-workout-id");
+
+        $.ajax({
+            url: `/api/delete-exercise/${workoutId}/${exerciseId}`,
+            type: "DELETE",
+            success: function(data, status) {
+                console.log(data);
+                console.log(status);
+                location.reload();
+            }
+        });
+        
     });
 
     $("#training-type").change(function () {
