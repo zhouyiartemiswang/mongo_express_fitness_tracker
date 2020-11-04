@@ -12,9 +12,8 @@ $(document).ready(function () {
             $(".workout-name").append(`<option data-id="${workout._id}">${workout.day}<option>`);
             $(".container").append(`
             <div class="row header">
-            <h2>${workout.day}</h2>
-            <a class="btn btn-primary" href="/create-workout" role="button">Add Exercise</a>
-            </div>`);
+            <h2>${workout.day}</h2>`);
+
             $(".container").append(`<div id="row${index}" class="row"></div>`);
 
             if (workout.exercises.length != 0) {
@@ -32,7 +31,7 @@ $(document).ready(function () {
                                         <li class="list-group-item"># Reps: ${exercise.reps}</li>
                                         <li class="list-group-item">Duration (min): ${exercise.duration}</li>
                                     </ul>
-                                    <button class="btn btn-primary delete-btn" data-id="${exercise._id}" data-workout-id="${workout._id}">Delete Exercise</button>
+                                    <button class="btn btn-secondary delete-btn" data-id="${exercise._id}" data-workout-id="${workout._id}">Delete Exercise</button>
                                 </div>
                             </div>`);
                     } else {
@@ -46,7 +45,7 @@ $(document).ready(function () {
                                         <li class="list-group-item">Distance (mile): ${exercise.distance}</li>
                                         <li class="list-group-item">Duration (min): ${exercise.duration}</li>
                                     </ul>
-                                    <button class="btn btn-primary delete-btn" data-id="${exercise._id}" data-workout-id="${workout._id}">Delete Exercise</button>
+                                    <button class="btn btn-secondary delete-btn" data-id="${exercise._id}" data-workout-id="${workout._id}">Delete Exercise</button>
                                 </div>
                             </div>`);
                     }
@@ -90,7 +89,7 @@ $(document).ready(function () {
         });
 
     });
-
+    
     $("#training-type").change(function () {
         const type = $("#training-type").val();
         if (type === "Cardio") {

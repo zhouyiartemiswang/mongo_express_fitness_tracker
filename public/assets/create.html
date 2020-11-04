@@ -14,118 +14,130 @@
     <div class="jumbotron">
         <h1 class="display-4">Create workouts!</h1>
         <p class="lead">Add exercises to your workout routine.</p>
-        <a class="btn btn-primary btn-lg" href="/" role="button">Home</a>
+        <a class="btn btn-secondary btn-lg" href="/" role="button">Home</a>
     </div>
-    <div class="card">
-        <!-- <div class="card-header">
-            Add Exercise
-        </div> -->
+    <div class="card add-exercise-form">
         <div class="card-body">
-            <h5 class="card-title">Add Exercise</h5>
-            <form>
-                <div class="form-group row">
-                    <label class="col-sm-6 col-form-label">Select Type of Training</label>
-                    <div class="col-sm-6">
-                        <select id="training-type">
-                            <option value="" selected disabled hidden></option>
-                            <option>Resistance</option>
-                            <option>Cardio</option>
-                        </select>
+            <div class="row">
+                <form>
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label">Select Type of Training</label>
+                        <div class="col-sm-6">
+                            <select id="training-type" class="form-control">
+                                <option value="" selected disabled hidden></option>
+                                <option>Resistance</option>
+                                <option>Cardio</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-            </form>
-            <form id="cardioForm">
-                <div class="form-group row">
-                    <label class="col-sm-6 col-form-label">Select Workout</label>
-                    <div class="col-sm-6">
-                        <select class="workout-name">
-                            <option value="" selected disabled hidden></option>
-                        </select>
+                </form>
+            </div>
+            <div class="row">
+                <form id="cardioForm">
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label">Select Workout</label>
+                        <div class="col-sm-6">
+                            <select class="workout-name form-control">
+                                <option value="" selected disabled hidden></option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-6 col-form-label">Select Name of Exercise</label>
-                    <div class="col-sm-6">
-                        <select class="exercise-name">
-                            <option value="" selected disabled hidden></option>
-                            <option>Running</option>
-                            <option>Stair Climbing</option>
-                            <option>Rope Jumping</option>
-                            <option>Cycling</option>
-                            <option>Swimming</option>
-                        </select>
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label">Select Name of Exercise</label>
+                        <div class="col-sm-6">
+                            <select class="exercise-name form-control">
+                                <option value="" selected disabled hidden></option>
+                                <option>Running</option>
+                                <option>Stair Climbing</option>
+                                <option>Rope Jumping</option>
+                                <option>Cycling</option>
+                                <option>Swimming</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-6 col-form-label">Distance (mile)</label>
-                    <div class="col-sm-6">
-                        <input type="number" class="form-control" id="distance">
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label">Distance (mile)</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" id="distance">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-6 col-form-label">Duration (min)</label>
-                    <div class="col-sm-6">
-                        <input type="number" class="form-control" id="duration">
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label">Duration (min)</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" id="duration">
+                        </div>
                     </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Add Exercise</button>
-            </form>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-secondary add-btn">Add Exercise</button>
+                        </div>
+                    </div>
+                </form>
+    
+                <form id="resistanceForm">
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label">Select Workout</label>
+                        <div class="col-sm-6">
+                            <select class="workout-name form-control">
+                                <option value="" selected disabled hidden></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label">Select Name of Exercise</label>
+                        <div class="col-sm-6">
+                            <select class="exercise-name form-control">
+                                <option value="" selected disabled hidden></option>
+                                <option>Squat</option>
+                                <option>Lunge</option>
+                                <option>Deadlift</option>
+                                <option>Pull Up</option>
+                                <option>Lat Pulldown</option>
+                                <option>Bent over Row</option>
+                                <option>Push Up</option>
+                                <option>Bench Press</option>
+                                <option>Tricep Pushdown</option>
+                                <option>Barbell Curl</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label">Weight (lb)</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" id="weights">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label">#Sets</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" id="sets">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label">#Reps</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" id="reps">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label">Duration (min)</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" id="duration">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-secondary add-btn">Add Exercise</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <a class="btn btn-secondary view-btn" href="/view-workout" role="button">View Workout</a>
 
-            <form id="resistanceForm">
-                <div class="form-group row">
-                    <label class="col-sm-6 col-form-label">Select Workout</label>
-                    <div class="col-sm-6">
-                        <select class="workout-name">
-                            <option value="" selected disabled hidden></option>
-                        </select>
-                    </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-6 col-form-label">Select Name of Exercise</label>
-                    <div class="col-sm-6">
-                        <select class="exercise-name">
-                            <option value="" selected disabled hidden></option>
-                            <option>Squat</option>
-                            <option>Lunge</option>
-                            <option>Deadlift</option>
-                            <option>Pull Up</option>
-                            <option>Lat Pulldown</option>
-                            <option>Bent over Row</option>
-                            <option>Push Up</option>
-                            <option>Bench Press</option>
-                            <option>Tricep Pushdown</option>
-                            <option>Barbell Curl</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-6 col-form-label">Weight (lb)</label>
-                    <div class="col-sm-6">
-                        <input type="number" class="form-control" id="weights">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-6 col-form-label">#Sets</label>
-                    <div class="col-sm-6">
-                        <input type="number" class="form-control" id="sets">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-6 col-form-label">#Reps</label>
-                    <div class="col-sm-6">
-                        <input type="number" class="form-control" id="reps">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-6 col-form-label">Duration (min)</label>
-                    <div class="col-sm-6">
-                        <input type="number" class="form-control" id="duration">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Add Exercise</button>
-                <!-- <a class="btn btn-primary" href="/view-workout" role="button">View Workout</a> -->
-            </form>
-            <a class="btn btn-primary" href="/view-workout" role="button">View Workout</a>
+            </div>
         </div>
     </div>
 
