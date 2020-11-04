@@ -3,7 +3,7 @@ const { Mongoose } = require("mongoose");
 const router = express.Router();
 const db = require("../models");
 
-// API route to add exercise
+// API route to add exercise to a workout
 router.post("/add-exercise/:day", (req, res) => {
     db.Exercise.create(req.body)
         .then(({ _id }) => db.Workout.findOneAndUpdate(

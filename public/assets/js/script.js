@@ -7,18 +7,25 @@ $(document).ready(function () {
     // Display all workouts with associated exercises in view page
     $.get("/api/view-workout", function (data, status) {
 
+        // For each workout
         data.forEach(function (workout, index) {
 
+            // Add workout day to select options
             $(".workout-name").append(`<option data-id="${workout._id}">${workout.day}<option>`);
+
+            // Use workout day as workout header
             $(".container").append(`
             <div class="row header">
             <h2>${workout.day}</h2>`);
 
             $(".container").append(`<div id="row${index}" class="row"></div>`);
 
+            // If a workout has exercises
             if (workout.exercises.length != 0) {
 
+                // Render individual exercise to a card based on type of exercise
                 workout.exercises.forEach(function (exercise) {
+
                     if (exercise.type === "Resistance") {
                         $(".container").children(`#row${index}`).append(`
                             <div class="col-sm-12 col-md-4">
@@ -50,7 +57,10 @@ $(document).ready(function () {
                             </div>`);
                     }
                 });
-            } else {
+
+            } 
+            // If no exercises, display this card instead
+            else {
 
                 $(".container").children(`#row${index}`).append(`
                 <div class="col-sm-12 col-md-4">
@@ -65,14 +75,14 @@ $(document).ready(function () {
         });
     });
 
-    // Create a workout
+    // Create a workout when Create Workout button is clicked
     $("#create-btn").on("click", function () {
         $.post("/api/create-workout", function (data, status) {
-            console.log(data);
+            console.log(status);
         });
     });
 
-    // Delete an exercise
+    // Delete an exercise when Delete Exercise button is clicked
     $(document).on("click", ".delete-btn", function () {
 
         const exerciseId = $(this).attr("data-id");
@@ -82,14 +92,14 @@ $(document).ready(function () {
             url: `/api/delete-exercise/${workoutId}/${exerciseId}`,
             type: "DELETE",
             success: function (data, status) {
-                console.log(data);
                 console.log(status);
                 location.reload();
             }
         });
 
     });
-    
+
+    // Display type of form based on user choice
     $("#training-type").change(function () {
         const type = $("#training-type").val();
         if (type === "Cardio") {
@@ -101,6 +111,7 @@ $(document).ready(function () {
         }
     });
 
+    // Post resistance form info to database when form is submitted
     $("#resistanceForm").on("submit", function () {
 
         const workoutDay = $(".workout-name").find(":selected").text();
@@ -119,6 +130,7 @@ $(document).ready(function () {
 
     });
 
+    // Post cardio form info to database when form is submitted
     $("#cardioForm").on("submit", function () {
 
         const workoutDay = $(".workout-name").find(":selected").text();
